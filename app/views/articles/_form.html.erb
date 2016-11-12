@@ -1,15 +1,6 @@
-<% if @article.errors.any? %>
-<h2> errors detail </h2>
- <ul>
-  <% @article.errors.full_messages.each do |msg| %>
- 	<li> <%= msg %></li>
+<%= render 'shared/errors', obj: @article %>
 
-  <% end %>
- </ul>
-
-<% end %>
-
-<div class='row'>
+<div class='row'> 
 	<div class='col-xs-12'>
 		<%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 			<div class="form-group">
@@ -36,10 +27,10 @@
 
 
 		<% end %>
-	<div class="col-xs-4 col-xs-offset-4">
-	<br>
-	[ <%= link_to "Cancel request and return", articles_path %> ]
-	</div>
-
+	
+		<div class="col-xs-4 col-xs-offset-4">
+			<br>
+			[ <%= link_to "Cancel request and return", articles_path %> ]
+		</div>
 	</div>
 </div>
