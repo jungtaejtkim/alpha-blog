@@ -16,6 +16,9 @@ class ArticlesController < ApplicationController
 	def create
 	
 		@article = Article.new(article_params)
+		
+		@article.user = User.first  #아직 유저 authe 가 안되어있어서 유저를 강제로 하드코딩함, 안그러면 저장이 안되니까 (발리데이션에 유저 presence 를 true 를 해둠)
+
 		if @article.save
             flash[:success] = "Article was successfully created"
             redirect_to article_path(@article)
