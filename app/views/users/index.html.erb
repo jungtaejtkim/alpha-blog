@@ -1,5 +1,8 @@
 <h1 align="center"> All users list </h1>
 <div align="center">
+
+	<%= will_paginate %>
+
 	<% @users.each do |user| %>
 		<ul class="listing">
 			<div class="row">
@@ -9,8 +12,10 @@
 						<%= link_to user.username, user_path(user) %> 
 					</li>
 					<li><small> <%= pluralize(user.articles.count, "article") if user.articles %> </small> </li>
+
 				</div>
 			</div>
 		</ul>
 	<% end %>
+	<%= will_paginate %>
 </div>

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
 
 	def index
-		@users=User.all
+		@users=User.paginate(page: params[:page], per_page: 5)
 	end
 
 
@@ -39,6 +39,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@user_articles = @user.articles.paginate(page: params[:page], per_page: 5) #위에 선언된 user 는 단수이기때문에 paginate 가 의미없어 작동하지 안흠 복수인 articles 에 적
 	end
 
 

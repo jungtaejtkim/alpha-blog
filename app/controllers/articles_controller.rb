@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
-		@articles=Article.all 
+		@articles=Article.paginate(page: params[:page], per_page: 5)
 	end
 
 
@@ -72,7 +72,7 @@ class ArticlesController < ApplicationController
 	
 
 	def article_params
-		params.require(:article).permit(:title, :description)	
+		params.require(:article).permit(:title, :description용)	
 	end
 
 
