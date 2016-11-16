@@ -2,7 +2,8 @@ class ArticlesController < ApplicationController
 	
 
 	before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+	before_action :require_user, except: [:index, :show]
+	before_action :require_same_user, only: [:edit, :update, :destroy]
 
 	def new
 		@article=Article.new
@@ -74,6 +75,15 @@ class ArticlesController < ApplicationController
 	def article_params
 		params.require(:article).permit(:title, :description용)	
 	end
+
+	def require_same_user
+		if current_user != @article.user 
+			#@article 도 마찬가지로 앞서서 set_article 이 앞서 실행되어있어 이미 이 method 안에서 바로 불러올수있음
+			flash[:danger] = "You can only edit your own articles"
+			redirect_to root_path
+		end
+	end
+
 
 
 
