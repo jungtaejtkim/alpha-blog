@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :articles
+	has_many :articles, dependent: :destroy # 유저가 삭제되면 아티클도 전부 삭제 
 	before_save { self.email = email.downcase }
 
 

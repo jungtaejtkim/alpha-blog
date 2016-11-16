@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def require_same_user
-		if current_user != @article.user 
+		if current_user != @article.user && !current_user.admin?
 			#@article은 앞서서 set_article 이 앞서 실행되어있어 이미 이 method 안에서 바로 불러올수있음
 			flash[:danger] = "You can only edit your own articles"
 			redirect_to root_path
