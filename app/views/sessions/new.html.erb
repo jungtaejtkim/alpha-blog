@@ -1,0 +1,32 @@
+<h1 align="center"> Log in </h1>
+
+ <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %> <!-- 로그인/로그아웃 세션은 데이터베이스를 hit 하는형태가 아님 즉, 모델 back 형태가 아님. (실세 세션모델에는 어떤 인스턴트 변수도 선언되어있지 않음) 그저 세션을 만들었다가 로그아웃하면 세션을 없애는것. 즉, 모델이 아닌 브라우져를 통해 생기는 info 들을 담은 session hash 임. 그래서 일반적 형태인 form_for helper 는 어떤 정보를 보여줘야할지 모르기때문에(모델과 db 가 있다면 form_for 이 @user 나 @article 로 알아서 해줬겠지만) 세션의 경우에는 route 를 구체화 해줘야함 -->
+	<div class="form-group">
+		<div class="col-sm-2 control-label">
+			<%= f.label :email %> 
+		</div>	
+		<div class="col-sm-8">
+			<%= f.email_field :email, class: "form-control", autofocus: true, placeholder: "Enter email" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-2 control-label">
+				<%= f.label :password %> 
+		</div>
+		<div class="col-sm-8">
+				<%= f.password_field :password, rows: 10, class: "form-control", autocomplete: "off" %>
+		</div>
+	</div>
+		<div class="form group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<%= f.submit "Lon in", class: 'btn btn-primary btn-lg' %> 
+			</div>
+		</div>
+
+
+	<% end %>
+
+	<div class="col-xs-4 col-xs-offset-4">
+	<br>
+	[ <%= link_to "Cancel request and return", articles_path %> ]
+	</div>

@@ -6,12 +6,12 @@
 	</div>
 <h4 align="center"><%= @user.username %>'s articles </h4>
 <div align="center">
-	<%= will_paginate @user_articles %> <!-- show action 에서 pagination 을 다르게 선언했기 때문에 index 와 모양이 다름 -->
+	<%= will_paginate @user_articles %> <!-- show action 에서 pagination 을 다르게 선언했기 때문에 index 와 모양이 다름, 유저가 아닌 그 유저의 articles 를 pagination 함-->
 </div>
 
-<%= render 'articles/article', obj: @user_articles %> <!-- 원래 @user.article 이었는데, paginate 를 위해 새로 설정한 변수인 @user_articles 로 변경 -->
+<%= render 'articles/article', obj: @user_articles %> <!-- 원래 @user.articles 이었는데, paginate 를 위해 새로 설정한 변수인 @user_articles 로 변경 -->
 
 
 <div align="center">
-	<%= will_paginate @user_articles %> <!-- show action 에서 pagination 을 다르게 선언했기 때문에 index 와 모양이 다름 -->
+	<%= will_paginate @user_articles %> 
 </div>
