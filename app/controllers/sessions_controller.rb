@@ -7,7 +7,7 @@ class SessionsController < ApplicationController #인스턴스변수를 만들�
 	def create #log in - start session state: lonin 으로, 내부에 authenticate 가 필요함
 		user = User.find_by(email: params[:session][:email].downcase) # 입력된 이메일 (세션 해쉬내에 존재) 로 유저를 찾는다. 유저 컨트롤러가 아니라서 유저 인스턴스버라이어블은 당연히 안씀
 		if user && user.authenticate(params[:session][:password])
-			session[:user_id] = user.id  #세션 해쉬내에 user_id 를 설정 -> 브라우져 back 이기 때문에 브라우져가 쿠키형태로 관리해서 해당 정보를 이용함. 로그인이 안된경우는 :user_id 는 nil 
+			session[:user_id] = user.id  #세션 해쉬내에 user_id 호출 모델내에 user_id 를 이전에 만들어둠 -> 브라우져 back 이기 때문에 브라우져가 쿠키형태로 관리해서 해당 정보를 이용함. 로그인이 안된경우는 :user_id 는 nil 
 			flash[:success] = "You have successfully logged in"
 			redirect_to user_path(user) #개별 유저 show 페이지로
 
