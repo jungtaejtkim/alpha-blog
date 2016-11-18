@@ -18,7 +18,10 @@
 	<h4 class="center description"><strong> Description </strong></h4>
 	<hr>
 	<%= simple_format(@article.description) %> 
-	
+	<% if @article.categories.any? %>
+		<p>Categories: <%= render @article.categories %> <!-- article.categories.each method 를 쓸수도 있으나 1개 이상이 내부에 있을때 render @atricle.categories 로 간편하게 쓸수도있음 그리고 이건 partial 을 필요로함 categories 폴더 내 _category partial 로 자동연결 되는것같음--> </p>
+
+	<% end %>
 	<div class="article-actions">
 		<% if logged_in? && (current_user == @article.user || current_user.admin?) %>
 			<%= link_to "Edit", 

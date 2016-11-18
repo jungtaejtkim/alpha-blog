@@ -12,6 +12,9 @@
 						   <%= time_ago_in_words(article.created_at) %> ago,
 						   last updated: <%= time_ago_in_words(article.updated_at) %> ago </small>	
 				    </div>
+				<% if article.categories.any? %>
+					<p>Categories: <%= render article.categories %> <!-- 여기는 show기.html 과 다르게 위쪽에 each 가 선언되어있으므로 @article 이 아닌 article 로 shortcut 표--> </p>
+				<% end %>
 				<% if logged_in? && (current_user == article.user || current_user.admin?)%>
 					<div class="article-actions">
 						<%= link_to "Edit", 
