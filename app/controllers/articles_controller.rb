@@ -73,7 +73,7 @@ class ArticlesController < ApplicationController
 	
 
 	def article_params
-		params.require(:article).permit(:title, :description)	
+		params.require(:article).permit(:title, :description, category_ids:[])	#manytomany 다수의 카테고리를 array 로 만들어서 white list 에 넣음 
 	end
 
 	def require_same_user
